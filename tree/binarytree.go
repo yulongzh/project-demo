@@ -30,3 +30,24 @@ type BinaryTree struct {
 func (*BinaryTree) NewBinaryTree(inputs []string) {
 
 }
+
+func (this *BinaryTree) Inorder() []int {
+	res := make([]int, 0)
+	this.inorder(this.root, &res)
+	return res
+}
+
+//
+//  inorder
+//  @Description: 中序遍历
+//  @receiver this
+//  @param root
+//  @param res
+//
+func (this *BinaryTree) inorder(root *Node, res *[]int) {
+	if root != nil {
+		this.inorder(root.Left, res)
+		*res = append(*res, root.data)
+		this.inorder(root.Right, res)
+	}
+}
